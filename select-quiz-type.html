@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1600, initial-scale=1.0" />
+  <title>Pokémon Quiz</title>
+  <link rel="stylesheet" href="select-quiz-type.css" />
+</head>
+<body>
+  <!-- Background Image -->
+  <div class="image-wrapper">
+    <img src="assets/QuizSelectPage/battle-bg.png" alt="Select Quiz Type Background" class="background-image" />
+  </div>
+
+  <!-- Trophy Button -->
+  <a href="trophy-page.html" class="trophy-button">
+    <img src="assets/shared/trophy-icon.png" alt="Trophy Icon" />
+  </a>
+
+  <!-- Header Image -->
+  <img src="assets/QuizSelectPage/header-select-quiz.png" alt="Select Quiz Type Header" class="header-image" />
+
+  <!-- Quiz Buttons -->
+  <div class="quiz-buttons">
+    <!-- Active Quiz -->
+    <a href="whos-that-pokemon.html">
+      <button class="quiz-button" id="pokemon-button">
+        <img src="assets/QuizSelectPage/whos-that-pokemon.png" alt="Who's That Pokemon" />
+        <img src="assets/shared/pixel-arrow.png" alt="Arrow" class="arrow" />
+      </button>
+    </a>
+    
+    <!-- Locked Quizzes -->
+    <button class="quiz-button locked" id="lore-button">
+      <img src="assets/QuizSelectPage/know-your-pokemon-lore.png" alt="Know Your Pokemon Lore" />
+      <img src="pixel-arrow.png" alt="Arrow" class="arrow" />
+    </button>
+    <button class="quiz-button locked" id="cry-button">
+      <img src="assets/QuizSelectPage/name-that-cry.png" alt="Name That Cry" />
+      <img src="pixel-arrow.png" alt="Arrow" class="arrow" />
+    </button>
+  </div>
+  
+  <script src="select-quiz-type.js"></script>
+</body>
+</html>

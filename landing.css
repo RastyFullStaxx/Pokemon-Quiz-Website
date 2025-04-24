@@ -1,0 +1,102 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+  
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    justify-content: space-between; /* Distribute space evenly between the elements */
+    align-items: center; /* Center horizontally */
+    position: relative;
+}
+  
+.video-wrapper {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    pointer-events: none; /* prevents interaction */
+}
+  
+.video-wrapper video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+  
+.header-image {
+    width: 100%;
+    max-width: 600px; /* Max width for larger screens */
+    margin-top: 40px; /* Adjust margin for positioning */
+}
+  
+.start-button {
+    position: relative;
+    margin-bottom: 30px; /* Same margin from the bottom */
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+}
+  
+.start-button img {
+    width: 150px; /* Set width of the start button */
+    height: auto;
+}
+
+/* Responsive Adjustments */
+
+/* When the screen width is 1200px or smaller (tablets, laptops) */
+@media (max-width: 1200px) {
+    .header-image {
+        max-width: 500px; /* Reduce max width for medium screens */
+    }
+
+    .start-button img {
+        width: 130px; /* Adjust start button size */
+    }
+}
+
+/* When the screen width is 900px or smaller (tablets) */
+@media (max-width: 900px) {
+    .header-image {
+        max-width: 400px; /* Reduce max width for tablets */
+    }
+
+    .start-button img {
+        width: 120px; /* Adjust start button size */
+    }
+}
+
+/* When the screen width is 600px or smaller (mobile devices) */
+@media (max-width: 600px) {
+    .header-image {
+        max-width: 300px; /* Reduce max width for small mobile devices */
+        margin-top: 20px; /* Adjust margin for smaller screens */
+    }
+
+    .start-button img {
+        width: 100px; /* Adjust start button size for small devices */
+    }
+}
+
+/* When the screen width is 400px or smaller (very small devices) */
+@media (max-width: 400px) {
+    .header-image {
+        max-width: 250px; /* Further reduce image size for very small devices */
+        margin-top: 10px; /* Adjust margin further for very small screens */
+    }
+
+    .start-button img {
+        width: 80px; /* Further reduce button size */
+    }
+}

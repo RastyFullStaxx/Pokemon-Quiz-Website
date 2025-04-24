@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1600, initial-scale=1.0" />
+  <title>Know Your Pokemon Lore!</title>
+  <link href='https://fonts.googleapis.com/css?family=VT323' rel='stylesheet'>
+  <link rel="stylesheet" href="KYPL-page.css" />
+</head>
+
+<body>
+    <div class="video-wrapper">
+        <video autoplay loop muted playsinline>
+          <source src="assets/KyplPage/KyplBG.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+    <img src="assets/KyplPage/KyplHeader.png" alt="Header Image" class="header-image" />
+    
+    <div class="ProgressBar">
+        <img src="assets/shared/PokeballProgress.png" alt="Progress Bar" class="progress-bar current" />
+        <img src="assets/shared/PokeballProgress.png" alt="Progress Bar" class="progress-bar" />
+        <img src="assets/shared/PokeballProgress.png" alt="Progress Bar" class="progress-bar" />
+        <img src="assets/shared/PokeballProgress.png" alt="Progress Bar" class="progress-bar" />
+        <img src="assets/shared/PokeballProgress.png" alt="Progress Bar" class="progress-bar" />
+        <img src="assets/shared/PokeballProgress.png" alt="Progress Bar" class="progress-bar" />
+        <img src="assets/shared/PokeballProgress.png" alt="Progress Bar" class="progress-bar" />
+    </div>
+
+    <div class="question-container">
+        <p class="question-text"></p>
+    </div>
+
+    <div class="image-container">
+        <img class="image" />
+    </div>
+
+    <div class="choices-container">
+        <button class="choice-button" id="choice1">Choice 1</button>
+        <button class="choice-button" id="choice2">Choice 2</button>
+        <button class="choice-button" id="choice3">Choice 3</button>
+        <button class="choice-button" id="choice4">Choice 4</button>
+    </div>
+    <script>
+        var questionTexts = [
+          "Who was the creator of Pokemon?",
+          "What year was the first Pokemon game released in Japan?",
+          "What is the name of the first region in the Pokemon world?"
+        ];
+        var questionNumber = 0;
+      
+        var images = [
+          "assets/KyplPage/Question1Hidden.png",
+          "assets/KyplPage/blank.png",
+          "assets/KyplPage/blank.png"
+        ];
+      
+        var choices = [
+          ["Satoshi Tajiri", "Junichi Masuda", "Ken Sugimori", "Atsuko Nishida"],
+          ["1996", "1997", "1998", "1999"],
+          ["Kanto", "Johto", "Hoenn", "Sinnoh"]
+        ];
+      
+        var correctAnswers = [
+          "Satoshi Tajiri",
+          "1996",
+          "Kanto"
+        ];
+      
+        function renderQuestion() {
+          document.querySelector('.question-text').textContent = questionTexts[questionNumber];
+          document.querySelector('.image').src = images[questionNumber];
+      
+          var choicesHtml = "";
+          for (var i = 0; i < choices[questionNumber].length; i++) {
+            choicesHtml += "<button class='choice-button' id='choice" + (i + 1) + "'>" + choices[questionNumber][i] + "</button>";
+          }
+          document.querySelector(".choices-container").innerHTML = choicesHtml;
+      
+          var buttons = document.querySelectorAll('.choice-button');
+          buttons.forEach(button => {
+            button.addEventListener('click', function () {
+              if (button.textContent === correctAnswers[questionNumber]) {
+                questionNumber = (questionNumber + 1) % questionTexts.length;
+                updateProgressBar();
+                renderQuestion();
+              }
+            });
+          });
+        }
+      
+        function updateProgressBar() {
+          var progressBars = document.querySelectorAll('.progress-bar');
+          progressBars.forEach((bar, i) => {
+            bar.classList.toggle('current', i === questionNumber);
+          });
+        }
+      
+        document.addEventListener('keydown', function(event) {
+          if (event.keyCode === 39) {
+            questionNumber = (questionNumber + 1) % questionTexts.length;
+          }
+          if (event.keyCode === 37) {
+            questionNumber = (questionNumber - 1 + questionTexts.length) % questionTexts.length;
+          }
+          updateProgressBar();
+          renderQuestion();
+        });
+      
+        renderQuestion();
+      </script>
+      
+          </script>
+</body>
+</html>
+
