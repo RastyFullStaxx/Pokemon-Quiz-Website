@@ -58,8 +58,7 @@ function loadQuestion() {
     btn.textContent = shuffledOptions[i];
     btn.disabled = false;
     btn.style.opacity = 1;
-    btn.style.border = "4px solid black"; 
-    btn.style.transform = "scale(1)";    
+    btn.style.border = "4px solid black";   
 
     btn.onclick = () => handleAnswer(btn.textContent, q.answer);
   });
@@ -81,7 +80,6 @@ function handleAnswer(selected, correct) {
 
     if (btn.textContent === correct) {
       btn.style.border = "4px solid #4CAF50";
-      btn.style.transform = "scale(1.04)";
       btn.style.opacity = 1;
     }
     if (btn.textContent === selected && !isCorrect) {
@@ -110,7 +108,6 @@ function handleAnswer(selected, correct) {
 
     choiceButtons.forEach(btn => {
       btn.style.border = "4px solid black";
-      btn.style.transform = "scale(1)";
       btn.style.opacity = 1;
       btn.classList.remove("shake");
     });

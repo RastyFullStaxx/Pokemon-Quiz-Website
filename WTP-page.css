@@ -98,24 +98,23 @@ html, body {
     color: white;
     border: 4px solid rgb(0, 0, 0);
     cursor: pointer;
-    transition: background-color 0.3s ease;
     text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
     border-radius: 15px;
     font-family: 'VT323';
-    font-weight: regular;
     letter-spacing: 2px;
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: transform 0.2s ease, background-color 0.2s ease;   
+    transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .choice-button:hover {
-    background-color: #f1c40f; /* You can customize the color */
+    background-color: #f1c40f;
     transform: scale(1.05);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  }
+}
+
 
 #choice1 {
     background-color: #BE1616;
