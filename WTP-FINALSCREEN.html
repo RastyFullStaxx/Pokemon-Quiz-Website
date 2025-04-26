@@ -1,21 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Score Board</title>
-    <link href='https://fonts.googleapis.com/css?family=VT323' rel='stylesheet'>
-    <link rel="stylesheet" href="WTP-FINALSCREEN.css"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Score Board</title>
+  <link href='https://fonts.googleapis.com/css?family=VT323' rel='stylesheet'>
+  <link rel="stylesheet" href="WTP-FINALSCREEN.css"/>
 </head>
-
 <body>
-    
-    <div class="video-wrapper">
-        <video autoplay loop muted playsinline>
-          <source src="assets/WtpPage/WtpBackground.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+
+  <div class="video-wrapper">
+    <video autoplay loop muted playsinline>
+      <source src="assets/WtpPage/WtpBackground.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <img src="assets/WtpPage/header-wtp.png" alt="Header Image" class="header-image" />
+
+  <!-- Main Content -->
+<div class="final-screen-container">
+    <img id="greeter" src="assets/WtpPage/BirchPerfectScore.png" alt="Greeter"/>
+  
+    <div class="dialog-wrapper">
+      <div class="option-box">
+        <img src="assets/shared/OptionBox.png" class="option-bg" />
+        <div class="options-list">
+          <img src="assets/shared/pixel-arrow.png" id="selector-arrow" />
+          <div id="option-0" class="option">Claim Trophy</div>
+          <div id="option-1" class="option">Menu</div>
+        </div>
+      </div>
+  
+      <div class="dialog-box">
+        <img src="assets/shared/DialogBox.png" class="dialog-bg" />
+        <p id="dialog-text" class="dialog-content">
+          Congratulations, Pokémon Master! You got all the answers right and proved you know your Pokémon by their shadows. Claim your trophy now!
+        </p>
+      </div>
     </div>
+  </div>
+  
+  
+    <!-- Trophy Unlock Container -->
+    <div id="trophy-unlock-container" class="hidden">
+        <div id="trophy-aura"></div> <!-- NEW: Aura -->
+        <img id="trophy-image" src="assets/TrophyPage/wtp-trophy-unlocked.png" alt="WTP Trophy" />
+        <img id="next-button" src="assets/shared/NEXT.png" alt="Next Button" />
+    </div>
+      
+  
+
+  <script type="module" src="WTP-FINALSCREEN.js"></script>
 
 </body>
 </html>

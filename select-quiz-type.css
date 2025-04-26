@@ -38,48 +38,69 @@
     max-width: 600px;
   }
   
-  /* Trophy Button */
-  .trophy-button {
-    position: absolute;
-    top: 30px;
-    right: 50px;
-    cursor: pointer;
-  }
-  
-  .trophy-button img {
-    width: 12vw;
-    max-width: 157px;
-    height: auto;
-  }  
-  
-  .quiz-buttons {
-    position: absolute;
-    top: 200px;
-    left: 70%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  .quiz-button {
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    position: relative;
-  }
-  
-  .quiz-button img {
-    width: 780px;
-    height: 140px;
-  }
+/* Trophy Button */
+.trophy-button {
+  position: absolute;
+  top: 30px;
+  right: 50px;
+  cursor: pointer;
+}
+
+.trophy-button img {
+  width: 12vw;
+  max-width: 157px;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.trophy-button:hover img {
+  animation: jump 0.6s ease forwards;
+}
+
+/* Jump Animation */
+@keyframes jump {
+  0% { transform: translateY(0); }
+  30% { transform: translateY(-15px); }
+  50% { transform: translateY(0); }
+  70% { transform: translateY(-7px); }
+  100% { transform: translateY(0); }
+}
+
+/* Quiz Buttons */
+.quiz-buttons {
+  position: absolute;
+  top: 200px;
+  left: 70%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.quiz-button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+}
+
+.quiz-button img {
+  width: 780px;
+  height: 140px;
+  transition: transform 0.2s ease;
+}
+
+.quiz-button:hover img {
+  transform: scale(1.03);
+}
+
   
   /* Arrow Style */
   .arrow {
     position: absolute;
     left: -60px;
-    top: 50%;
+    top: 20%;
     transform: translateY(-50%);
     width: 49px !important;
     height: 105px !important;
@@ -126,5 +147,41 @@
     .quiz-buttons { top: 120px; left: 50%; transform: translateX(-50%); }
     .quiz-button img { width: 300px; height: 60px; }
     .arrow { width: 30px; height: 60px; left: -30px; }
+  }
+  
+  #ash {
+    position: fixed;
+    left: 100px;
+    bottom: -50px;
+    width: auto;
+    height: 870px;
+    margin: 0;
+    padding: 0;
+    z-index: 10;
+    
+    animation: idleFloat 0.8s ease-in-out infinite; /* << ADD THIS */
+  }
+  
+  
+  @keyframes idleFloat {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-50px); /* How much Ash floats up */
+    }
+  }
+  
+  @keyframes shakeLocked {
+    0% { transform: translateX(0); }
+    20% { transform: translateX(-8px); }
+    40% { transform: translateX(8px); }
+    60% { transform: translateX(-6px); }
+    80% { transform: translateX(6px); }
+    100% { transform: translateX(0); }
+  }
+  
+  .locked.shake {
+    animation: shakeLocked 0.5s ease;
   }
   

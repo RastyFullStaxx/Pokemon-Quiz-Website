@@ -91,3 +91,157 @@ html, body {
     height: 100%; /* Image height will be 100% of the button height */
     max-width: 100%; /* Prevent the image from stretching beyond the button width */
 }
+
+.unlock-popup {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 215, 0, 0.9); /* Golden background */
+    color: black;
+    padding: 15px 25px;
+    border-radius: 20px;
+    font-family: 'VT323', monospace;
+    font-size: 28px;
+    opacity: 0;
+    animation: popupFade 2s ease forwards;
+    z-index: 9999;
+  }
+  
+  /* Animation for popup */
+  @keyframes popupFade {
+    0% {
+      transform: translateX(-50%) translateY(0);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    80% {
+      transform: translateX(-50%) translateY(-30px); /* Float up */
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  
+  /* Trophy morph shaking effect */
+@keyframes trophyShake {
+    0% { transform: translate(0, 0) rotate(0); }
+    25% { transform: translate(2px, -2px) rotate(-2deg); }
+    50% { transform: translate(-2px, 2px) rotate(2deg); }
+    75% { transform: translate(2px, 2px) rotate(-2deg); }
+    100% { transform: translate(0, 0) rotate(0); }
+  }
+  
+  /* Trophy morph flashing effect */
+  @keyframes trophyFlash {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  /* Burst Ring */
+.burst-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(255,255,255,0) 70%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 1;
+    z-index: 0; /* behind trophy */
+    pointer-events: none;
+    animation: burstGrow 0.8s ease-out forwards;
+  }
+  
+  /* Burst Grow Animation */
+  @keyframes burstGrow {
+    0% {
+      transform: translate(-50%, -50%) scale(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(8);
+      opacity: 0;
+    }
+  }
+
+  .trophy-slot {
+    position: relative;
+    width: 461px;
+    height: 461px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Important to clip extra sparkles inside */
+  }
+  
+  /* Trophy itself */
+  .trophy {
+    position: relative;
+    z-index: 2; /* Trophy above shine and sparkles */
+  }
+  
+  /* Energy Shine */
+  .energy-shine {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(184, 15, 206, 0.25) 0%, rgba(255, 255, 255, 0) 70%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: shinePulse 3s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0; /* Behind trophy */
+  }
+  
+  /* Shine Pulsing */
+  @keyframes shinePulse {
+    0% { transform: translate(-50%, -50%) scale(1); opacity: 0.4; }
+    50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.8; }
+    100% { transform: translate(-50%, -50%) scale(1); opacity: 0.4; }
+  }
+  
+  /* Floating Sparkles */
+  .sparkle {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: radial-gradient(circle, white 0%, transparent 70%);
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: floatSparkle 4s ease-in-out infinite, sparkleColorChange 6s linear infinite;
+    pointer-events: none;
+    z-index: 1; /* Between shine and trophy */
+  }  
+  
+  @keyframes sparkleColorChange {
+    0% { background: radial-gradient(circle, #ffffff 0%, transparent 70%); }
+    25% { background: radial-gradient(circle, #ffd1dc 0%, transparent 70%); } /* Soft Pink */
+    50% { background: radial-gradient(circle, #d1e8ff 0%, transparent 70%); } /* Soft Blue */
+    75% { background: radial-gradient(circle, #e0ffd1 0%, transparent 70%); } /* Soft Green */
+    100% { background: radial-gradient(circle, #ffffff 0%, transparent 70%); }
+  }
+  
+
+  /* Sparkle floating animation */
+  @keyframes floatSparkle {
+    0% {
+      transform: translate(0, 0) scale(0.8);
+      opacity: 0.8;
+    }
+    50% {
+      transform: translate(20px, -30px) scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(-20px, -60px) scale(0.8);
+      opacity: 0.5;
+    }
+  }
+  
