@@ -123,3 +123,4 @@ document.addEventListener("keydown", (e) => {
     options[currentIndex].click();
   }
 });
+

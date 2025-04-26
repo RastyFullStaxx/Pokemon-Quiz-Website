@@ -1,5 +1,3 @@
-import { unlockTrophy } from './trophyManager.js';
-
 // ====== QUIZ DATA ======
 const questions = [
   { name: "Pikachu", options: ["Raichu", "Pikachu", "Pichu", "Eevee"], answer: "Pikachu" },
@@ -35,7 +33,7 @@ const nextButton = document.getElementById("next-button");
 
 // ====== START QUIZ ======
 document.addEventListener("DOMContentLoaded", () => {
-  shuffleArray(questions); // Shuffle questions at start
+  shuffleArray(questions);
   loadQuestion();
 });
 
@@ -60,12 +58,11 @@ function loadQuestion() {
     btn.textContent = shuffledOptions[i];
     btn.disabled = false;
     btn.style.opacity = 1;
-    btn.style.border = "4px solid black"; // <<< ADD THIS line here
-    btn.style.transform = "scale(1)"; // (optional reset if you want clean)
-  
+    btn.style.border = "4px solid black"; 
+    btn.style.transform = "scale(1)";    
+
     btn.onclick = () => handleAnswer(btn.textContent, q.answer);
   });
-  
 }
 
 // ====== HANDLE ANSWER ======
@@ -112,7 +109,7 @@ function handleAnswer(selected, correct) {
     feedbackOverlay.classList.remove("active");
 
     choiceButtons.forEach(btn => {
-      btn.style.border = "2px solid black";
+      btn.style.border = "4px solid black";
       btn.style.transform = "scale(1)";
       btn.style.opacity = 1;
       btn.classList.remove("shake");
@@ -129,8 +126,14 @@ function handleAnswer(selected, correct) {
 
 // ====== END QUIZ ======
 function endQuiz() {
-  sessionStorage.setItem("wtpScore", score); // Save score
-  window.location.href = "WTP-FINALSCREEN.html"; // Redirect to final result screen
+  sessionStorage.setItem("wtpScore", score);
+
+  if (score === questions.length) {
+    sessionStorage.setItem("wtpTrophy", "unlocked");  // Unlock WTP Trophy
+    sessionStorage.setItem("kyplUnlocked", "true");    // Unlock KYPL Quiz
+  }
+
+  window.location.href = "WTP-FINALSCREEN.html"; // Redirect to Final Screen
 }
 
 // ====== HELPER: Shuffle any array ======
