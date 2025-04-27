@@ -1,22 +1,23 @@
+/* General Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'VT323';
-}
-
-html, body {
+  }
+  
+  html, body {
     width: 100%;
     height: 100%;
     overflow: hidden;
     display: flex;
-    flex-direction: column; /* Stack elements vertically */
-    justify-content: flex-start; /* Move the elements to the top */
-    align-items: center; /* Center horizontally */
+    flex-direction: column;
+    align-items: center;
     position: relative;
-}
-
-.video-wrapper {
+  }
+  
+  /* Background Video */
+  .video-wrapper {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -24,103 +25,160 @@ html, body {
     height: 100%;
     transform: translate(-50%, -50%);
     z-index: -1;
-    pointer-events: none; 
-}
-
-.video-wrapper video {
+    pointer-events: none;
+  }
+  
+  .video-wrapper video {
     width: 100%;
     height: 100%;
     object-fit: cover;
     filter: blur(2px);
-}
-
-.header-image {
+  }
+  
+  /* Header */
+  .header-image {
     width: 100%;
     max-width: 600px;
-    margin-top: 40px;
-}
-
-.question-container {
+    margin-top: 20px;
+  }
+  
+  /* Progress Bar */
+  .ProgressBar {
+    display: flex;
+    margin-top: 10px;
+    gap: 5px;
+    transform: scale(0.75);
+  }
+  
+  .progress-bar {
+    opacity: 50%;
+  }
+  
+  .progress-bar.current {
+    opacity: 1;
+  }
+  
+  /* Question Text */
+  .question-container {
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .question-text {
+    font-size: 48px;
+    color: white;
+    text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+  }
+  
+  /* Image + Overlay Container */
+  .image-overlay-wrapper {
+    margin-top: 70px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 20px;
-}
-
-.question-container p {
-    font-size: 60px;
-    margin-bottom: 10px;
-    color: white;
-    text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
-}
-
-.ProgressBar {
-    display: flex;
-    width: auto;
-    height: auto;
-    scale: 0.75;
-    margin-top: 20px;
-    gap: 5px;
-}
-
-.progress-bar {
-    opacity: 50%;
-}
-
-.progress-bar.current {
-    opacity: 100%;
-}
-
-.image-container {
+    height: 360px; /* <<< FIXED HEIGHT */
+    justify-content: center;
+    position: relative;
+  }
+  
+  .image-container {
+    width: 320px; /* same width you want Satoshi to have */
+    height: 320px; /* same height for all */
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.image-container .image {
-    justify-self: center;
-    width: 60%;
+  }
+  
+  .image-container .image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* <<< ensures images fit nicely */
+  }  
+  
+  /* Feedback Overlay */
+  #feedback-overlay {
+    position: relative; /* Stay in flow under the image */
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row; /* <<< CHANGE THIS from column to row */
+    justify-content: center; /* Center the two items horizontally */
+    align-items: center; /* Align message and button properly */
+    gap: 20px; /* <<< Add nice spacing between message and Next */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+  
+  #feedback-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+  
+  
+  #feedback-message {
+    width: 300px;
     height: auto;
-}
-.choices-container {
+    margin-bottom: 8px;
+  }
+  
+  #next-button {
+    background: transparent; /* <<< No background */
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+  
+  #next-button img {
+    width: 80px;
+    height: auto;
+  }
+  
+  /* Choices Grid */
+  .choices-container {
+    margin-top: 30px;
     display: grid;
     grid-template-columns: repeat(2, 500px);
     grid-template-rows: repeat(2, 80px);
     gap: 30px;
     justify-content: center;
-}
-
-.choice-button {
+  }
+  
+  .choice-button {
     width: 100%;
     height: 100%;
-    font-size: 50px;
+    font-size: 36px;
     color: white;
-    border: 4px solid rgb(0, 0, 0);
+    border: 4px solid black;
+    border-radius: 10px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
-    border-radius: 15px;
-    font-family: 'VT323';
-    font-weight: regular;
-    letter-spacing: 2px;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;   
-}
-
-#choice1 {
-    background-color: #BE1616;
-}
-
-#choice2 {
-    background-color: #36AE7C;
-}
-
-#choice3 {
-    background-color: #F9D923;
-}
-
-#choice4 {
-    background-color: #187498;
-}
+    background-color: #333;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+  }
+  
+  .choice-button:hover {
+    transform: scale(1.05);
+    background-color: #f1c40f;
+    color: black;
+  }
+  
+  /* Choice Colors */
+  #choice1 { background-color: #BE1616; }
+  #choice2 { background-color: #36AE7C; }
+  #choice3 { background-color: #F9D923; }
+  #choice4 { background-color: #187498; }
+  
+  /* Shake Animation */
+  @keyframes shake {
+    0% { transform: translateX(0); }
+    20% { transform: translateX(-5px); }
+    40% { transform: translateX(5px); }
+    60% { transform: translateX(-5px); }
+    80% { transform: translateX(5px); }
+    100% { transform: translateX(0); }
+  }
+  
+  .shake {
+    animation: shake 0.4s ease;
+  }
+  

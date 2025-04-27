@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Score Board - Know Your Pokémon Lore!</title>
+  <link href='https://fonts.googleapis.com/css?family=VT323' rel='stylesheet'>
+  <link rel="stylesheet" href="KYPL-FINALSCREEN.css"/>
+</head>
+
+<body>
+
+  <!-- Background Video (no blur) -->
+  <div class="video-wrapper">
+    <video autoplay loop muted playsinline>
+      <source src="assets/KyplPage/KyplBG.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <!-- Header Image -->
+  <img src="assets/KyplPage/KyplHeader.png" alt="Header Image" class="header-image" />
+
+  <!-- Main Content -->
+  <div class="final-screen-container">
+    <img id="greeter" src="assets/KyplPage/OakPerfectScore.png" alt="Greeter"/>
+
+    <div class="dialog-wrapper">
+      <div class="option-box">
+        <img src="assets/shared/OptionBox.png" class="option-bg" />
+        <div class="options-list">
+          <img src="assets/shared/pixel-arrow.png" id="selector-arrow" />
+          <div id="option-0" class="option">Claim Trophy</div>
+          <div id="option-1" class="option">Menu</div>
+        </div>
+      </div>
+
+      <div class="dialog-box">
+        <img src="assets/shared/DialogBox.png" class="dialog-bg" />
+        <p id="dialog-text" class="dialog-content">
+          Congratulations, Pokémon Professor! You got all the lore questions right! Claim your trophy now!
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Trophy Unlock Section -->
+  <div id="trophy-unlock-container" class="hidden">
+    <div id="trophy-aura"></div>
+    <img id="trophy-image" src="assets/TrophyPage/kypl-trophy-unlocked.png" alt="KYPL Trophy" />
+    <img id="next-button" src="assets/shared/NEXT.png" alt="Next Button" />
+  </div>
+
+  <script type="module" src="KYPL-FINALSCREEN.js"></script>
+
+</body>
+
+</html>

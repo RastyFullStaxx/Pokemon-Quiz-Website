@@ -1,24 +1,33 @@
 document.addEventListener('DOMContentLoaded', () => {
   const buttons = document.querySelectorAll('.quiz-button');
   const loreButton = document.getElementById('lore-button');
+  const cryButton = document.getElementById('cry-button');
 
-  // === Unlock KYPL if perfected WTP ===
+  // === Unlock KYPL if WTP perfected ===
   if (sessionStorage.getItem('kyplUnlocked') === "true") {
     loreButton.classList.remove('locked');
-    loreButton.style.pointerEvents = "auto";
-    loreButton.style.opacity = "1";
-
-    // Rebind click
     loreButton.addEventListener('click', () => {
       window.location.href = "KYPL-page.html"; 
     });
   } else {
     loreButton.addEventListener('click', () => {
-      shakeButton(loreButton); // Use shake instead of alert
+      alert("Perfect Who's That Pokémon first to unlock this quiz!");
     });
   }
 
-  // === Arrow hover control
+  // === Unlock NTC if KYPL perfected ===
+  if (sessionStorage.getItem('ntcUnlocked') === "true") {
+    cryButton.classList.remove('locked');
+    cryButton.addEventListener('click', () => {
+      window.location.href = "NTC-page.html"; 
+    });
+  } else {
+    cryButton.addEventListener('click', () => {
+      alert("Perfect Know Your Pokémon Lore first to unlock this quiz!");
+    });
+  }
+
+  // === Arrow hover control (your original effect)
   buttons.forEach(button => {
     const arrow = button.querySelector('.arrow');
 
