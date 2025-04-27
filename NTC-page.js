@@ -40,8 +40,8 @@ const questions = [
       name: "Mewtwo",
       options: ["Mewtwo", "Gengar", "Psyduck", "Charizard"],
       answer: "Mewtwo",
-      cry: "assets\NtcPage\MewtwoCry.mp3"
-    }
+      cry: "assets/NtcPage/MewtwoCry.mp3"  // <<< fixed forward slashes
+    }    
   ];
   
   // ====== AUDIO ======

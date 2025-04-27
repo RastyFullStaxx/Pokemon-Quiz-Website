@@ -359,7 +359,7 @@ html, body {
 
 #titles-container {
   position: absolute;
-  top: 230px; /* Adjust vertical position */
+  top: 220px; /* Adjust vertical position */
   left: 49%;
   transform: translateX(-50%);
   display: flex;
