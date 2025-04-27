@@ -32,11 +32,12 @@ window.addEventListener("DOMContentLoaded", () => {
 
   bgMusic.volume = 0;
   bgMusic.loop = true;
-  bgMusic.play().then(() => {
-    fadeInMusic(bgMusic);
-  }).catch(() => {
-    console.log("Background music will start after interaction.");
-  });
+
+  bgMusic.play()
+    .then(() => fadeInMusic(bgMusic))
+    .catch(() => {
+      console.log("Background music will start after user interaction.");
+    });
 
   document.body.addEventListener("click", () => {
     if (bgMusic.paused) bgMusic.play();
@@ -52,30 +53,31 @@ function setupScreen() {
     dialogText.textContent = "Outstanding! You recognized every cry perfectly! Claim your trophy!";
     options[0].textContent = "Claim Trophy";
     options[0].onclick = claimTrophy;
-    playAfterResultMusic(perfectSound);
+    playScoreSfx(perfectSound);
   } else if (score >= 4) {
     greeter.src = "assets/NtcPage/JuniperFewErrors.png";
     dialogText.textContent = `You got ${score} answers right! Almost there!`;
     options[0].textContent = "Try Again";
-    options[0].onclick = () => window.location.href = "NTC-page.html";
-    playAfterResultMusic(fourToSixSound);
+    options[0].onclick = () => fadeAndRedirect("NTC-page.html");
+    playScoreSfx(fourToSixSound);
   } else {
     greeter.src = "assets/NtcPage/JuniperManyErrors.png";
     dialogText.textContent = `You got ${score} correct. Keep practicing those cries!`;
     options[0].textContent = "Try Again";
-    options[0].onclick = () => window.location.href = "NTC-page.html";
-    playAfterResultMusic(oneToThreeSound);
+    options[0].onclick = () => fadeAndRedirect("NTC-page.html");
+    playScoreSfx(oneToThreeSound);
   }
 
   options[1].textContent = "Menu";
-  options[1].onclick = () => window.location.href = "select-quiz-type.html";
+  options[1].onclick = () => fadeAndRedirect("select-quiz-type.html");
 
   updateArrowPosition();
 }
 
 // ====== Claim Trophy ======
 function claimTrophy() {
-  bgMusic.pause();
+  bgMusic.pause(); // Pause bg music when claiming trophy
+  trophySound.currentTime = 0;
   trophySound.play();
 
   greeter.style.display = "none";
@@ -96,9 +98,24 @@ function claimTrophy() {
   };
 }
 
-// ====== Fade in Music ======
+// ====== Play Score SFX ======
+function playScoreSfx(soundEffect) {
+  // Fade out bg music slightly when playing score sound
+  bgMusic.volume = 0.2;
+
+  soundEffect.play().catch(() => {
+    console.log("Score sound effect autoplay blocked, waiting for user.");
+  });
+
+  soundEffect.addEventListener('ended', () => {
+    // Bring back bg music softly
+    fadeInMusic(bgMusic);
+  });
+}
+
+// ====== Fade In Music Helper ======
 function fadeInMusic(audio) {
-  let volume = 0;
+  let volume = audio.volume;
   const fadeInterval = setInterval(() => {
     if (volume < 0.5) {
       volume += 0.01;
@@ -108,13 +125,6 @@ function fadeInMusic(audio) {
       audio.volume = 0.5;
     }
   }, 50);
-}
-
-// ====== Play After Result Music ======
-function playAfterResultMusic(music) {
-  bgMusic.pause();
-  music.volume = 1;
-  music.play();
 }
 
 // ====== Arrow Movement ======
@@ -155,4 +165,13 @@ document.addEventListener("keydown", (e) => {
 function playButtonHover() {
   clickSound.currentTime = 0;
   clickSound.play();
+}
+
+// ====== Fade and Redirect Helper ======
+function fadeAndRedirect(destination) {
+  fadeOverlay.style.transition = 'opacity 0.8s ease';
+  fadeOverlay.style.opacity = '1';
+  setTimeout(() => {
+    window.location.href = destination;
+  }, 800);
 }

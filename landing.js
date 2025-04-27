@@ -26,26 +26,24 @@ document.addEventListener('DOMContentLoaded', () => {
     fadeOverlay.style.opacity = '0';
   }, 200);
 
-  // ==== Play background music immediately ====
-  bgMusic.volume = 0;     // Start with volume 0 (silent)
-  bgMusic.muted = false;  // Make sure it's unmuted
-  bgMusic.play().then(() => {
-    console.log("Background music started.");
+// ==== Try playing background music immediately ====
+bgMusic.volume = 0;
+bgMusic.muted = false;
 
-    // Fade in the volume slowly to 0.5
-    let targetVolume = 0.5;
-    let currentVolume = 0;
-    const fadeInterval = setInterval(() => {
-      if (currentVolume < targetVolume) {
-        currentVolume += 0.05;
-        bgMusic.volume = Math.min(currentVolume, targetVolume);
-      } else {
-        clearInterval(fadeInterval);
-      }
-    }, 100); // Increase volume every 100ms
-  }).catch((error) => {
-    console.log("Autoplay blocked or failed:", error);
-  });
+bgMusic.play().then(() => {
+  console.log("Background music started immediately.");
+
+  fadeInMusic(bgMusic); // <== New function to fade in volume
+}).catch((error) => {
+  console.log("Autoplay blocked. Waiting for user click...");
+
+  document.body.addEventListener('click', () => {
+    bgMusic.play().then(() => {
+      console.log("Background music started after user click.");
+      fadeInMusic(bgMusic); // <== Also fade in when started
+    });
+  }, { once: true });
+});
 
   // ==== Animate video zoom-out ====
   setTimeout(() => {
@@ -84,3 +82,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 800);
   });
 });
+
+function fadeInMusic(audio) {
+  let targetVolume = 0.5;
+  let currentVolume = 0;
+  const fadeInterval = setInterval(() => {
+    if (currentVolume < targetVolume) {
+      currentVolume += 0.05;
+      audio.volume = Math.min(currentVolume, targetVolume);
+    } else {
+      clearInterval(fadeInterval);
+    }
+  }, 100);
+}
+
