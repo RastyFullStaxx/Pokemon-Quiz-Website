@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1600, initial-scale=1.0">
+    <title>Name That Cry!</title>
+    <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
+    <link rel="stylesheet" href="NTC-page.css" />
+</head>
+
+<body>
+
+    <!-- Fade Overlay for Transitions -->
+    <div id="fade-overlay"></div>
+
+    <!-- Background Video -->
+    <div class="video-wrapper">
+        <video autoplay loop muted playsinline>
+            <source src="assets/NtcPage/NtcBackground.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <!-- Header Image -->
+    <img src="assets/NtcPage/header.png" alt="Header Image" class="header-image" />
+
+    <!-- Progress Bar -->
+    <div class="ProgressBar">
+        <img src="assets/shared/PokeballProgress.png" alt="Progress Bar" class="progress-bar current" />
+        <img src="assets/shared/PokeballProgress.png" alt="Progress Bar" class="progress-bar" />
+        <img src="assets/shared/PokeballProgress.png" alt="Progress Bar" class="progress-bar" />
+        <img src="assets/shared/PokeballProgress.png" alt="Progress Bar" class="progress-bar" />
+        <img src="assets/shared/PokeballProgress.png" alt="Progress Bar" class="progress-bar" />
+        <img src="assets/shared/PokeballProgress.png" alt="Progress Bar" class="progress-bar" />
+        <img src="assets/shared/PokeballProgress.png" alt="Progress Bar" class="progress-bar" />
+    </div>
+
+    <!-- Audio Play Button (Image) -->
+    <div class="image-container">
+        <img id="audio-button" src="assets/NtcPage/Audio.png" class="image" />
+    </div>
+
+    <!-- Feedback Overlay -->
+    <div id="feedback-overlay" class="hidden">
+        <div id="feedback-content">
+            <img id="feedback-message" src="" alt="Answer Feedback" />
+            <img id="next-button" src="assets/shared/NextQuestion.png" alt="Next Question" />
+        </div>
+    </div>
+
+    <!-- Choices -->
+    <div class="choices-container">
+        <button class="choice-button" id="choice1">Raichu</button>
+        <button class="choice-button" id="choice2">Pikachu</button>
+        <button class="choice-button" id="choice3">Pichu</button>
+        <button class="choice-button" id="choice4">Eevee</button>
+    </div>
+
+    <!-- Background Theme Music -->
+    <audio id="bg-music" src="assets/shared/NTCTheme.mp3" loop preload="auto"></audio>
+
+    <!-- Button Click Sound -->
+    <audio id="click-sound" src="assets/shared/ButtonClick.mp3" preload="auto"></audio>
+
+    <!-- Wrong Answer Sound -->
+    <audio id="wrong-sound" src="assets/shared/WrongAnswer.mp3" preload="auto"></audio>
+
+    <!-- Correct Answer Sound -->
+    <audio id="correct-sound" src="assets/shared/CorrectAnswer.mp3" preload="auto"></audio>
+
+    <!-- JavaScript -->
+    <script type="module" src="NTC-page.js"></script>
+
+</body>
+
+</html>

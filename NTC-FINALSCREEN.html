@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Score Board - Name That Cry!</title>
+  <link href='https://fonts.googleapis.com/css?family=VT323' rel='stylesheet'>
+  <link rel="stylesheet" href="NTC-FINALSCREEN.css" />
+</head>
+
+<body>
+
+  <!-- Fade Overlay for Fade-in/Fade-out -->
+  <div id="fade-overlay"></div>
+
+  <!-- Background Video -->
+  <div class="video-wrapper">
+    <video autoplay loop muted playsinline>
+      <source src="assets/NtcPage/NtcBackground.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <!-- Header Image -->
+  <img src="assets/NtcPage/header.png" alt="Header Image" class="header-image" />
+
+  <!-- Main Content -->
+  <div class="final-screen-container">
+    <img id="greeter" src="assets/NtcPage/JuniperPerfectScore.png" alt="Greeter" />
+
+    <div class="dialog-wrapper">
+      <div class="option-box">
+        <img src="assets/shared/OptionBox.png" class="option-bg" />
+        <div class="options-list">
+          <img src="assets/shared/pixel-arrow.png" id="selector-arrow" />
+          <div id="option-0" class="option">Claim Trophy</div>
+          <div id="option-1" class="option">Menu</div>
+        </div>
+      </div>
+
+      <div class="dialog-box">
+        <img src="assets/shared/DialogBox.png" class="dialog-bg" />
+        <p id="dialog-text" class="dialog-content">
+          Outstanding! You identified all Pokémon cries correctly! Claim your trophy now!
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Trophy Unlock Section -->
+  <div id="trophy-unlock-container" class="hidden">
+    <div id="trophy-aura"></div>
+    <img id="trophy-image" src="assets/TrophyPage/ntc-trophy-unlocked.png" alt="NTC Trophy" />
+    <img id="next-button" src="assets/shared/NEXT.png" alt="Next Button" />
+  </div>
+
+  <!-- Audios -->
+  <audio id="bg-music" src="assets/shared/NTCTheme.mp3" loop preload="auto"></audio>
+  <audio id="click-sound" src="assets/shared/ButtonClick.mp3" preload="auto"></audio>
+  <audio id="trophy-sound" src="assets/shared/TrophyScreenSound.mp3" preload="auto"></audio>
+  <audio id="score-1to3" src="assets/shared/1to3ScoreSound.mp3" preload="auto"></audio>
+  <audio id="score-4to6" src="assets/shared/4to6ScoreSound.mp3" preload="auto"></audio>
+  <audio id="score-perfect" src="assets/shared/PerfectScoreSound.mp3" preload="auto"></audio>
+
+  <!-- JavaScript -->
+  <script type="module" src="NTC-FINALSCREEN.js"></script>
+
+</body>
+</html>
