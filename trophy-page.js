@@ -1,27 +1,31 @@
 document.addEventListener("DOMContentLoaded", () => {
 
   const fadeOverlay = document.getElementById('fade-overlay');
+  const dimOverlay = document.getElementById('dim-overlay'); // <<< new dim overlay
   const bgMusic = document.getElementById('bg-music');
   const clickSound = document.getElementById('click-sound');
   const backButton = document.querySelector('.back-button');
 
-  // ==== Initial fade in from black ====
+  const ultimateDialog = document.querySelector('.ultimate-dialog-wrapper');
+  const ultimateOption = document.getElementById('ultimate-option');
+  const titlesContainer = document.getElementById('titles-container');
+
+  // ==== Initial Fade-in ====
   fadeOverlay.style.opacity = '1';
   setTimeout(() => {
     fadeOverlay.style.transition = 'opacity 0.8s ease';
     fadeOverlay.style.opacity = '0';
   }, 100);
 
-  // === Handle background music (fresh play) ===
+  // ==== Background Music ====
   bgMusic.volume = 0.5;
   bgMusic.muted = true;
   bgMusic.play().then(() => {
     setTimeout(() => { bgMusic.muted = false; }, 300);
   }).catch(() => {
-    console.log("Music will start after first interaction.");
+    console.log("Music will start after user interaction.");
   });
 
-  // Force play on first user click
   document.body.addEventListener('click', () => {
     if (bgMusic.paused) {
       bgMusic.muted = false;
@@ -29,24 +33,20 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }, { once: true });
 
-  // === Back button hover and click effects ===
+  // ==== Back Button Hover and Click ====
   if (backButton) {
     const button = backButton.querySelector('button');
-
     button.addEventListener('mouseenter', () => {
       clickSound.currentTime = 0;
       clickSound.play();
     });
-
     backButton.addEventListener('click', (e) => {
       e.preventDefault();
       playClickAndFade(backButton.href);
     });
   }
 
-  // ==== TROPHY UNLOCK SYSTEM ====
-
-  // WTP Trophy
+  // ==== Trophy Unlocks ====
   handleTrophyUnlock({
     trophyKey: "wtpTrophy",
     trophyId: "wtp-trophy",
@@ -55,7 +55,6 @@ document.addEventListener("DOMContentLoaded", () => {
     animationFlag: "wtpAnimationPlayed"
   });
 
-  // KYPL Trophy
   handleTrophyUnlock({
     trophyKey: "kyplTrophy",
     trophyId: "kypl-trophy",
@@ -64,7 +63,6 @@ document.addEventListener("DOMContentLoaded", () => {
     animationFlag: "kyplAnimationPlayed"
   });
 
-  // NTC Trophy
   handleTrophyUnlock({
     trophyKey: "ntcTrophy",
     trophyId: "ntc-trophy",
@@ -73,9 +71,40 @@ document.addEventListener("DOMContentLoaded", () => {
     animationFlag: "ntcAnimationPlayed"
   });
 
+  // ==== Ultimate Titles and Dialog ====
+  const allUnlocked = sessionStorage.getItem('wtpTrophy') === "unlocked"
+                    && sessionStorage.getItem('kyplTrophy') === "unlocked"
+                    && sessionStorage.getItem('ntcTrophy') === "unlocked";
+
+  if (allUnlocked) {
+    titlesContainer.classList.remove('hidden');
+
+    if (!sessionStorage.getItem('ultimateCongratulationsShown')) {
+      setTimeout(() => {
+        dimOverlay.classList.add('active');    // <<< Dim screen
+        ultimateDialog.classList.remove('hidden');
+      }, 2500);
+
+      sessionStorage.setItem('ultimateCongratulationsShown', 'true');
+    }
+  }
+
+  // ==== Close Ultimate Dialog ====
+  if (ultimateOption) {
+    ultimateOption.addEventListener('mouseenter', () => {
+      clickSound.currentTime = 0;
+      clickSound.play();
+    });
+
+    ultimateOption.addEventListener('click', () => {
+      ultimateDialog.classList.add('hidden');
+      dimOverlay.classList.remove('active');   // <<< Remove dim
+    });
+  }
+
 });
 
-// === Helper: Play click, fade out, then navigate
+// ==== Fade-out helper ====
 function playClickAndFade(destinationUrl) {
   const fadeOverlay = document.getElementById('fade-overlay');
   const bgMusic = document.getElementById('bg-music');
@@ -87,7 +116,6 @@ function playClickAndFade(destinationUrl) {
   fadeOverlay.style.transition = 'opacity 0.8s ease';
   fadeOverlay.style.opacity = '1';
 
-  // Fade out music gently
   let fadeOutMusic = setInterval(() => {
     if (bgMusic.volume > 0.05) {
       bgMusic.volume -= 0.05;
@@ -103,8 +131,7 @@ function playClickAndFade(destinationUrl) {
   }, 800);
 }
 
-// === EXISTING FUNCTIONS you already had (no change) ===
-
+// ==== Trophy Shine/Unlock Effects ====
 function handleTrophyUnlock({ trophyKey, trophyId, unlockedSrc, popupMessage, animationFlag }) {
   const trophy = document.getElementById(trophyId);
 
@@ -115,7 +142,6 @@ function handleTrophyUnlock({ trophyKey, trophyId, unlockedSrc, popupMessage, an
     } else {
       setTimeout(() => {
         trophy.style.animation = "trophyShake 0.6s ease, trophyFlash 0.6s ease";
-
         setTimeout(() => {
           trophy.src = unlockedSrc;
           trophy.style.animation = "";
@@ -152,7 +178,6 @@ function createBurstEffect(trophyElement) {
 
 function addEnergyShine(trophyElement) {
   const slot = trophyElement.parentElement;
-
   const shine = document.createElement("div");
   shine.classList.add("energy-shine");
   slot.appendChild(shine);

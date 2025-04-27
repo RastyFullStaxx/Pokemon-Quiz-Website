@@ -5,22 +5,31 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=1600, initial-scale=1.0" />
   <title>Pokémon Trophies</title>
+  <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
   <link rel="stylesheet" href="trophy-page.css" />
 </head>
 
 <body>
 
   <!-- Fade Overlay for transitions -->
-  <div id="fade-overlay"></div> <!-- <<< ADD THIS -->
+  <div id="fade-overlay"></div>
 
-  <!-- Background Image (same as select-quiz-type) -->
+  <!-- NEW: Dim Overlay for Dramatic Focus (starts hidden) -->
+  <div id="dim-overlay" class="hidden"></div>
+
+  <!-- Background Image -->
   <div class="image-wrapper">
-    <img src="assets/TrophyPage/trophy-bg.png" alt="Select Quiz Type Background" class="background-image" />
+    <img src="assets/TrophyPage/trophy-bg.png" alt="Trophy Background" class="background-image" />
   </div>
 
-  <!-- Header Image (centered) -->
+  <!-- Header Image -->
   <div class="header-container">
     <img src="assets/TrophyPage/header-trophies.png" alt="Pokémon Trophies Header" class="header-image" />
+  </div>
+
+  <!-- NEW Trophy Titles Image (floating, hidden initially) -->
+  <div id="titles-container" class="hidden">
+    <img src="assets/shared/TrophyTitles.png" alt="Trophy Titles" id="titles-image" />
   </div>
 
   <!-- Trophies Section -->
@@ -45,21 +54,42 @@
     </div>
   </div>
 
-  <!-- Back Button at the bottom center -->
+  <!-- Ultimate Champion Dialog (starts hidden) -->
+  <div class="ultimate-dialog-wrapper hidden">
+
+    <!-- Option Box -->
+    <div class="option-box">
+      <img src="assets/shared/OptionBox.png" class="option-bg" />
+      <div class="options-list">
+        <img src="assets/shared/pixel-arrow.png" id="ultimate-selector-arrow" />
+        <div id="ultimate-option" class="option">Close</div>
+      </div>
+    </div>
+
+    <!-- Dialog Box -->
+    <div class="dialog-box">
+      <img src="assets/shared/DialogBox.png" class="dialog-bg" />
+      <p id="ultimate-dialog-text" class="dialog-content">
+        Ultimate congratulations, Pokémon Champion! You’ve mastered the shadows, the lore, and the cries. You truly are a Pokémon legend!
+      </p>
+    </div>
+
+  </div>
+
+  <!-- Back Button -->
   <a href="select-quiz-type.html" class="back-button">
     <button class="back-button-style">
       <img src="assets/shared/back_button.png" alt="Back" />
     </button>
   </a>
 
-  <!-- Background Music (reuse) -->
-  <audio id="bg-music" src="assets/shared/SelectQuizTheme.mp3" loop preload="auto"></audio> <!-- <<< ADD THIS -->
-
-  <!-- Button Click Sound -->
-  <audio id="click-sound" src="assets/shared/ButtonClick.mp3" preload="auto"></audio> <!-- <<< ADD THIS -->
+  <!-- Audios -->
+  <audio id="bg-music" src="assets/shared/TrophyRoomTheme.mp3" loop preload="auto"></audio>
+  <audio id="click-sound" src="assets/shared/ButtonClick.mp3" preload="auto"></audio>
 
   <!-- JavaScript -->
   <script src="trophy-page.js"></script>
 
 </body>
+
 </html>

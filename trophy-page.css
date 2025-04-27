@@ -259,3 +259,134 @@ html, body {
     }
   }
   
+  /* ====== Ultimate Dialog Box (Champion Message) ====== */
+
+.ultimate-dialog-wrapper {
+  position: absolute;
+  top: 735px; /* Adjust vertical placement */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1500px;
+  height: 270px;
+  z-index: 9998; /* Above trophies but below fade */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'VT323', monospace; /* <<< POKEMON FONT APPLIED */
+}
+
+.dialog-box {
+  position: relative;
+  width: 100%;
+  height: 70%;
+}
+
+.dialog-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.dialog-content {
+  position: absolute;
+  padding: 30px 60px;
+  font-size: 40px; /* Slightly larger for EPIC FEEL */
+  line-height: 1.5;
+  color: black;
+  z-index: 1;
+  text-align: left; /* Centered text */
+  font-family: 'VT323', monospace; /* <<< POKEMON FONT */
+}
+
+/* Option Box containing the "Close" */
+.option-box {
+  position: absolute;
+  top: 120px; /* Move it above the dialog */
+  left: 91%;
+  transform: translateX(-50%);
+  width: 180px;
+  height: 90px;
+  padding: 5px 9px;
+  z-index: 2;
+}
+
+.option-bg {
+  position: absolute;
+  width: 100%;
+  height: 80%;
+  z-index: 0;
+}
+
+.options-list {
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 25px 0 0 75px;
+  font-size: 28px;
+  color: white;
+  font-family: 'VT323', monospace; /* <<< POKEMON FONT */
+}
+
+.option {
+  cursor: pointer;
+}
+
+/* Hover effect on Close option */
+.option:hover {
+  text-shadow: 0 0 5px #fff;
+}
+
+/* Selector Arrow for Close */
+#ultimate-selector-arrow {
+  position: absolute;
+  width: 18px;
+  height: auto;
+  left: 38px;
+  top: 25px; /* align with first option */
+  transition: top 0.2s ease;
+  animation: blink 1s step-start infinite;
+}
+
+/* Blink animation for the arrow */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+#titles-container {
+  position: absolute;
+  top: 250px; /* Adjust vertical position */
+  left: 49%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+  pointer-events: none; /* <<< This ensures users don't accidentally "hover" or "click" here */
+}
+
+.hidden {
+  display: none;
+}
+
+#dim-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); /* Soft black dim */
+  opacity: 0;
+  pointer-events: none; /* Allow clicks to pass through until active */
+  z-index: 3; /* Higher than background, but lower than dialog */
+  transition: opacity 0.5s ease;
+}
+
+#dim-overlay.active {
+  opacity: 1;
+  pointer-events: all; /* Block clicks on background when active */
+}

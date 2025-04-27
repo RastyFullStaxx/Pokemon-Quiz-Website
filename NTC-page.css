@@ -128,16 +128,17 @@
   }
   
   #next-button {
+    width: 80px; /* or whatever size you want */
+    height: auto;
+    cursor: pointer;
     background: transparent;
     border: none;
-    cursor: pointer;
     padding: 0;
-  }
-  
-  #next-button img {
-    width: 80px;
-    height: auto;
-  }
+    transition: opacity 0.5s ease;
+    align-self: center;
+    position: relative;
+    top: -10px; /* <<< adjust this */
+  }  
   
   /* Choices */
   .choices-container {
