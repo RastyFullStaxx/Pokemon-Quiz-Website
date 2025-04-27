@@ -139,6 +139,11 @@
     position: relative;
     top: -10px; /* <<< adjust this */
   }  
+
+  #next-button:hover {
+    transform: scale(1.1);
+    transition: transform 0.2s ease; /* Smooth grow */
+}
   
   /* Choices */
   .choices-container {

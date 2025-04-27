@@ -190,6 +190,12 @@ function handleAnswer(selected, correct) {
   };
 }
 
+nextButton.addEventListener('mouseenter', () => {
+  clickSound.currentTime = 0;
+  clickSound.play();
+});
+
+
 // ====== END QUIZ ======
 function endQuiz() {
   sessionStorage.setItem("wtpScore", score);

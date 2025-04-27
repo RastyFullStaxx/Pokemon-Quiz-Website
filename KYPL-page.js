@@ -108,6 +108,16 @@ document.addEventListener("DOMContentLoaded", () => {
   loadQuestion();
 });
 
+nextButton.addEventListener('mouseenter', () => {
+  clickSound.currentTime = 0;
+  clickSound.play();
+});
+
+nextButton.addEventListener('mouseenter', () => {
+  clickSound.currentTime = 0;
+  clickSound.play();
+});
+
 // ====== LOAD A QUESTION ======
 function loadQuestion() {
   const q = questions[currentQuestion];
