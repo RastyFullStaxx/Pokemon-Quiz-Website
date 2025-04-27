@@ -1,11 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
-
   const buttons = document.querySelectorAll('.quiz-button');
   const loreButton = document.getElementById('lore-button');
   const cryButton = document.getElementById('cry-button');
   const bgMusic = document.getElementById('bg-music');
   const clickSound = document.getElementById('click-sound');
-  const fadeOverlay = document.getElementById('fade-overlay'); // NEW
+  const fadeOverlay = document.getElementById('fade-overlay');
 
   // ==== Initial fade in from black ====
   fadeOverlay.style.opacity = '1';
@@ -14,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     fadeOverlay.style.opacity = '0';
   }, 100);
 
-  // === Try muted autoplay
+  // ==== Try muted autoplay
   bgMusic.volume = 0.5;
   bgMusic.muted = true;
   bgMusic.play().then(() => {
@@ -23,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log("Music will start after first interaction");
   });
 
-  // === Force music play on first user action
+  // ==== Force music play on first user click
   document.body.addEventListener('click', () => {
     if (bgMusic.paused) {
       bgMusic.muted = false;
@@ -31,41 +30,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }, { once: true });
 
-  // === Unlock KYPL if WTP perfected ===
+  // ==== Handle button locking/unlocking
   if (sessionStorage.getItem('kyplUnlocked') === "true") {
     loreButton.classList.remove('locked');
-    loreButton.addEventListener('click', (e) => {
-      e.preventDefault();
-      playClickAndFade('KYPL-page.html');
-    });
+    restoreLink(loreButton, 'KYPL-page.html');
   } else {
-    loreButton.addEventListener('click', () => {
-      alert("Perfect Who's That Pokémon first to unlock this quiz!");
-    });
+    removeParentLink(loreButton);
   }
 
-  // === Unlock NTC if KYPL perfected ===
   if (sessionStorage.getItem('ntcUnlocked') === "true") {
     cryButton.classList.remove('locked');
-    cryButton.addEventListener('click', (e) => {
-      e.preventDefault();
-      playClickAndFade('NTC-page.html');
-    });
+    restoreLink(cryButton, 'NTC-page.html');
   } else {
-    cryButton.addEventListener('click', () => {
-      alert("Perfect Know Your Pokémon Lore first to unlock this quiz!");
-    });
+    removeParentLink(cryButton);
   }
 
-  // === Arrow hover control and sound control
+  // ==== Button hover and click behavior
   buttons.forEach(button => {
     const arrow = button.querySelector('.arrow');
 
     button.addEventListener('mouseenter', () => {
       if (!button.classList.contains('locked')) {
         arrow.style.visibility = 'visible';
-
-        // Play hover sound
         clickSound.currentTime = 0;
         clickSound.play();
       }
@@ -76,16 +62,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     button.addEventListener('click', (e) => {
-      if (!button.classList.contains('locked')) {
+      if (button.classList.contains('locked')) {
+        e.preventDefault();
+        shakeButton(button);
+        showUnlockAlert(button.id);
+      } else {
         e.preventDefault();
         playClickAndFade(getButtonDestination(button));
-      } else {
-        shakeButton(button);
       }
     });
   });
 
-  // === Trophy button click setup
+  // ==== Trophy button
   const trophyButton = document.querySelector('.trophy-button');
   if (trophyButton) {
     trophyButton.addEventListener('mouseenter', () => {
@@ -98,24 +86,21 @@ document.addEventListener('DOMContentLoaded', () => {
       playClickAndFade(trophyButton.href);
     });
   }
-
 });
 
-// === Helper to fade music, fade out screen, and navigate
+// ==== Helpers
+
 function playClickAndFade(destinationUrl) {
   const bgMusic = document.getElementById('bg-music');
   const clickSound = document.getElementById('click-sound');
   const fadeOverlay = document.getElementById('fade-overlay');
 
-  // Play click sound
   clickSound.currentTime = 0;
   clickSound.play();
 
-  // Fade screen to black
   fadeOverlay.style.transition = 'opacity 0.8s ease';
   fadeOverlay.style.opacity = '1';
 
-  // Fade music out
   let fadeOutMusic = setInterval(() => {
     if (bgMusic.volume > 0.05) {
       bgMusic.volume -= 0.05;
@@ -126,13 +111,11 @@ function playClickAndFade(destinationUrl) {
     }
   }, 50);
 
-  // After fade-out, navigate
   setTimeout(() => {
     window.location.href = destinationUrl;
   }, 800);
 }
 
-// === Shake animation for locked buttons
 function shakeButton(button) {
   button.classList.add('shake');
   setTimeout(() => {
@@ -140,11 +123,38 @@ function shakeButton(button) {
   }, 500);
 }
 
-// === Helper to get destination URL from button inside <a>
 function getButtonDestination(button) {
   const parentLink = button.closest('a');
   if (parentLink) {
     return parentLink.href;
   }
   return null;
+}
+
+function showUnlockAlert(buttonId) {
+  if (buttonId === 'lore-button') {
+    alert("Perfect Who's That Pokémon first to unlock this quiz!");
+  } else if (buttonId === 'cry-button') {
+    alert("Perfect Know Your Pokémon Lore first to unlock this quiz!");
+  }
+}
+
+// ==== New: Remove <a> wrapper for locked buttons
+function removeParentLink(button) {
+  const parentLink = button.closest('a');
+  if (parentLink) {
+    const wrapper = parentLink.parentNode;
+    wrapper.replaceChild(button, parentLink); // Replace <a> with <button> itself
+  }
+}
+
+// ==== New: Restore <a> link when unlocked
+function restoreLink(button, destinationUrl) {
+  const parent = button.parentNode;
+  if (parent && parent.tagName !== 'A') {
+    const link = document.createElement('a');
+    link.href = destinationUrl;
+    link.appendChild(button);
+    parent.appendChild(link);
+  }
 }

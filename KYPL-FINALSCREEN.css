@@ -200,7 +200,216 @@ html, body {
     animation: bounce 0.5s ease; /* Play bounce once on hover */
   }
   
-  
+  /* ========== Enhanced Media Queries for KYPL Final Screen ========== */
+
+/* For very large screens (desktops 1600px and above) */
+@media (min-width: 1600px) {
+  .header-image {
+    max-width: 700px;
+    margin-top: 50px;
+  }
+
+  #greeter {
+    width: 650px;
+    top: 300px;
+  }
+
+  .dialog-box {
+    width: 1600px;
+    height: 300px;
+    top: 780px;
+  }
+
+  .dialog-content {
+    font-size: 54px;
+  }
+
+  #trophy-image {
+    width: 800px;
+  }
+
+  #trophy-aura {
+    width: 800px;
+    height: 800px;
+  }
+}
+
+/* For large laptops (1440px - 1599px) */
+@media (max-width: 1599px) and (min-width: 1201px) {
+  .header-image {
+    max-width: 600px;
+    margin-top: 40px;
+  }
+
+  #greeter {
+    width: 600px;
+    top: 320px;
+  }
+
+  .dialog-box {
+    width: 1500px;
+    height: 270px;
+    top: 750px;
+  }
+
+  .dialog-content {
+    font-size: 49px;
+  }
+
+  #trophy-image {
+    width: 700px;
+  }
+
+  #trophy-aura {
+    width: 700px;
+    height: 700px;
+  }
+}
+
+/* For medium laptops (1200px - 901px) */
+@media (max-width: 1200px) and (min-width: 901px) {
+  .header-image {
+    max-width: 500px;
+    margin-top: 30px;
+  }
+
+  #greeter {
+    width: 500px;
+    top: 310px;
+  }
+
+  .dialog-box {
+    width: 1200px;
+    height: 250px;
+    top: 730px;
+  }
+
+  .dialog-content {
+    font-size: 42px;
+  }
+
+  #trophy-image {
+    width: 600px;
+  }
+
+  #trophy-aura {
+    width: 600px;
+    height: 600px;
+  }
+}
+
+/* For small laptops and tablets (900px - 601px) */
+@media (max-width: 900px) and (min-width: 601px) {
+  .header-image {
+    max-width: 400px;
+    margin-top: 20px;
+  }
+
+  #greeter {
+    width: 400px;
+    top: 300px;
+  }
+
+  .dialog-box {
+    width: 900px;
+    height: 220px;
+    top: 700px;
+  }
+
+  .dialog-content {
+    font-size: 36px;
+  }
+
+  #trophy-image {
+    width: 500px;
+  }
+
+  #trophy-aura {
+    width: 500px;
+    height: 500px;
+  }
+}
+
+/* For mobile phones (600px and below) */
+@media (max-width: 600px) {
+  .header-image {
+    max-width: 300px;
+    margin-top: 10px;
+  }
+
+  #greeter {
+    width: 300px;
+    top: 270px;
+  }
+
+  .dialog-box {
+    width: 95%;
+    height: 200px;
+    top: 670px;
+  }
+
+  .dialog-content {
+    font-size: 30px;
+    padding: 30px;
+  }
+
+  .option-box {
+    top: 590px;
+    left: 70%;
+    width: 200px;
+    height: 110px;
+  }
+
+  #trophy-image {
+    width: 400px;
+  }
+
+  #trophy-aura {
+    width: 400px;
+    height: 400px;
+  }
+}
+
+/* For very small phones (400px and below) */
+@media (max-width: 400px) {
+  .header-image {
+    max-width: 250px;
+    margin-top: 0px;
+  }
+
+  #greeter {
+    width: 250px;
+    top: 260px;
+  }
+
+  .dialog-box {
+    width: 90%;
+    height: 180px;
+    top: 650px;
+  }
+
+  .dialog-content {
+    font-size: 26px;
+    padding: 20px;
+  }
+
+  .option-box {
+    top: 580px;
+    left: 65%;
+    width: 180px;
+    height: 100px;
+  }
+
+  #trophy-image {
+    width: 350px;
+  }
+
+  #trophy-aura {
+    width: 350px;
+    height: 350px;
+  }
+}
+
   
   
   

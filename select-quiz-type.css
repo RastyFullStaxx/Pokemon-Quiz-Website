@@ -134,35 +134,6 @@
     pointer-events: none;
   }
   
-  /* Responsive Adjustments */
-  @media (max-width: 1200px) {
-    .header-image { max-width: 500px; }
-    .quiz-buttons { top: 180px; left: 50%; transform: translateX(-50%); }
-    .quiz-button img { width: 600px; height: 110px; }
-    .arrow { width: 49px; height: 105px; }
-  }
-  
-  @media (max-width: 900px) {
-    .header-image { max-width: 400px; }
-    .quiz-buttons { top: 160px; left: 50%; transform: translateX(-50%); }
-    .quiz-button img { width: 500px; height: 90px; }
-    .arrow { width: 40px; height: 85px; }
-  }
-  
-  @media (max-width: 600px) {
-    .header-image { max-width: 300px; top: 40px; }
-    .quiz-buttons { top: 140px; left: 50%; transform: translateX(-50%); }
-    .quiz-button img { width: 380px; height: 70px; }
-    .arrow { width: 35px; height: 75px; left: -40px; }
-  }
-  
-  @media (max-width: 400px) {
-    .header-image { max-width: 250px; top: 30px; }
-    .quiz-buttons { top: 120px; left: 50%; transform: translateX(-50%); }
-    .quiz-button img { width: 300px; height: 60px; }
-    .arrow { width: 30px; height: 60px; left: -30px; }
-  }
-  
   #ash {
     position: fixed;
     left: 100px;
@@ -199,3 +170,176 @@
     animation: shakeLocked 0.5s ease;
   }
   
+  /* ========== Enhanced Media Queries for Select Quiz Page ========== */
+
+/* For very large screens (desktop monitors 1600px and above) */
+@media (min-width: 1600px) {
+  .header-image {
+    max-width: 700px;
+    left: 120px;
+    top: 80px;
+  }
+
+  .quiz-button img {
+    width: 900px;
+    height: 160px;
+  }
+
+  .arrow {
+    width: 60px;
+    height: 120px;
+    left: -70px;
+  }
+
+  #ash {
+    height: 1000px;
+    left: 150px;
+  }
+}
+
+/* For large laptops (1440px - 1599px) */
+@media (max-width: 1599px) and (min-width: 1201px) {
+  .header-image {
+    max-width: 600px;
+    left: 100px;
+    top: 60px;
+  }
+
+  .quiz-button img {
+    width: 780px;
+    height: 140px;
+  }
+
+  .arrow {
+    width: 49px;
+    height: 105px;
+    left: -60px;
+  }
+
+  #ash {
+    height: 870px;
+    left: 100px;
+  }
+}
+
+/* For medium laptops (between 1200px and 901px) */
+@media (max-width: 1200px) and (min-width: 901px) {
+  .header-image {
+    max-width: 500px;
+    left: 80px;
+    top: 50px;
+  }
+
+  .quiz-buttons {
+    top: 180px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .quiz-button img {
+    width: 600px;
+    height: 110px;
+  }
+
+  .arrow {
+    width: 49px;
+    height: 105px;
+    left: -50px;
+  }
+
+  #ash {
+    height: 750px;
+    left: 80px;
+  }
+}
+
+/* For small laptops and large tablets */
+@media (max-width: 900px) and (min-width: 601px) {
+  .header-image {
+    max-width: 400px;
+    left: 60px;
+    top: 40px;
+  }
+
+  .quiz-buttons {
+    top: 160px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .quiz-button img {
+    width: 500px;
+    height: 90px;
+  }
+
+  .arrow {
+    width: 40px;
+    height: 85px;
+    left: -40px;
+  }
+
+  #ash {
+    height: 600px;
+    left: 60px;
+  }
+}
+
+/* For mobile phones */
+@media (max-width: 600px) {
+  .header-image {
+    max-width: 300px;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .quiz-buttons {
+    top: 140px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .quiz-button img {
+    width: 380px;
+    height: 70px;
+  }
+
+  .arrow {
+    width: 35px;
+    height: 75px;
+    left: -35px;
+  }
+
+  #ash {
+    height: 400px;
+    left: 30px;
+  }
+}
+
+/* For very small devices (mobile phones <400px) */
+@media (max-width: 400px) {
+  .header-image {
+    max-width: 250px;
+    top: 20px;
+  }
+
+  .quiz-buttons {
+    top: 120px;
+  }
+
+  .quiz-button img {
+    width: 300px;
+    height: 60px;
+  }
+
+  .arrow {
+    width: 30px;
+    height: 60px;
+    left: -30px;
+  }
+
+  #ash {
+    height: 300px;
+    left: 20px;
+  }
+}

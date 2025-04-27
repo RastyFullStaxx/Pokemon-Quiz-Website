@@ -90,24 +90,72 @@
     50% { opacity: 0.6; }
   }
   
-  /* Responsive */
-  @media (max-width: 1200px) {
-    .header-image { max-width: 500px; }
-    .start-button img { width: 130px; }
+/* ========== Enhanced Media Queries ========== */
+
+/* For large screens (desktops, wide monitors) */
+@media (min-width: 1600px) {
+  .header-image {
+    max-width: 700px;
   }
-  
-  @media (max-width: 900px) {
-    .header-image { max-width: 400px; }
-    .start-button img { width: 120px; }
+
+  .start-button img {
+    width: 180px;
   }
-  
-  @media (max-width: 600px) {
-    .header-image { max-width: 300px; margin-top: 20px; }
-    .start-button img { width: 100px; }
+}
+
+/* For typical laptops (1366px - 1440px width range) */
+@media (max-width: 1440px) and (min-width: 1201px) {
+  .header-image {
+    max-width: 550px;
   }
-  
-  @media (max-width: 400px) {
-    .header-image { max-width: 250px; margin-top: 10px; }
-    .start-button img { width: 80px; }
+
+  .start-button img {
+    width: 140px;
   }
-  
+}
+
+/* For medium laptops / tablets (900px - 1200px) */
+@media (max-width: 1200px) and (min-width: 901px) {
+  .header-image {
+    max-width: 500px;
+  }
+
+  .start-button img {
+    width: 130px;
+  }
+}
+
+/* For small laptops and tablets */
+@media (max-width: 900px) and (min-width: 601px) {
+  .header-image {
+    max-width: 400px;
+  }
+
+  .start-button img {
+    width: 120px;
+  }
+}
+
+/* For mobile phones */
+@media (max-width: 600px) {
+  .header-image {
+    max-width: 300px;
+    margin-top: 20px;
+  }
+
+  .start-button img {
+    width: 100px;
+  }
+}
+
+/* For very small devices */
+@media (max-width: 400px) {
+  .header-image {
+    max-width: 250px;
+    margin-top: 10px;
+  }
+
+  .start-button img {
+    width: 80px;
+  }
+}

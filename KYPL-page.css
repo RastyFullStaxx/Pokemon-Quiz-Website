@@ -201,5 +201,169 @@
   animation: shake 0.4s ease;
 }
 
+/* ========== Enhanced Media Queries for KYPL-page ========== */
+
+/* For very large screens (desktops 1600px and above) */
+@media (min-width: 1600px) {
+  .header-image {
+    max-width: 700px;
+    margin-top: 30px;
+  }
+
+  .choices-container {
+    grid-template-columns: repeat(2, 600px);
+    grid-template-rows: repeat(2, 100px);
+    gap: 40px;
+  }
+
+  .choice-button {
+    font-size: 60px;
+  }
+
+  .image-container {
+    width: 400px;
+    height: 400px;
+  }
+
+  #feedback-message {
+    width: 340px;
+  }
+}
+
+/* For large laptops (1440px - 1599px) */
+@media (max-width: 1599px) and (min-width: 1201px) {
+  .header-image {
+    max-width: 600px;
+    margin-top: 20px;
+  }
+
+  .choices-container {
+    grid-template-columns: repeat(2, 500px);
+    grid-template-rows: repeat(2, 80px);
+    gap: 30px;
+  }
+
+  .choice-button {
+    font-size: 50px;
+  }
+
+  .image-container {
+    width: 320px;
+    height: 320px;
+  }
+
+  #feedback-message {
+    width: 300px;
+  }
+}
+
+/* For medium laptops (1200px - 901px) */
+@media (max-width: 1200px) and (min-width: 901px) {
+  .header-image {
+    max-width: 500px;
+    margin-top: 15px;
+  }
+
+  .choices-container {
+    grid-template-columns: repeat(2, 400px);
+    grid-template-rows: repeat(2, 70px);
+    gap: 25px;
+  }
+
+  .choice-button {
+    font-size: 45px;
+  }
+
+  .image-container {
+    width: 280px;
+    height: 280px;
+  }
+
+  #feedback-message {
+    width: 260px;
+  }
+}
+
+/* For small laptops and tablets (900px - 601px) */
+@media (max-width: 900px) and (min-width: 601px) {
+  .header-image {
+    max-width: 400px;
+    margin-top: 10px;
+  }
+
+  .choices-container {
+    grid-template-columns: repeat(2, 300px);
+    grid-template-rows: repeat(2, 60px);
+    gap: 20px;
+  }
+
+  .choice-button {
+    font-size: 40px;
+  }
+
+  .image-container {
+    width: 240px;
+    height: 240px;
+  }
+
+  #feedback-message {
+    width: 230px;
+  }
+}
+
+/* For mobile phones (600px and below) */
+@media (max-width: 600px) {
+  .header-image {
+    max-width: 300px;
+    margin-top: 5px;
+  }
+
+  .choices-container {
+    grid-template-columns: repeat(1, 300px);
+    grid-template-rows: repeat(4, 60px);
+    gap: 20px;
+  }
+
+  .choice-button {
+    font-size: 36px;
+  }
+
+  .image-container {
+    width: 200px;
+    height: 200px;
+  }
+
+  #feedback-message {
+    width: 200px;
+  }
+}
+
+/* For very small phones (400px and below) */
+@media (max-width: 400px) {
+  .header-image {
+    max-width: 250px;
+    margin-top: 0;
+  }
+
+  .choices-container {
+    grid-template-columns: repeat(1, 250px);
+    grid-template-rows: repeat(4, 50px);
+    gap: 15px;
+  }
+
+  .choice-button {
+    font-size: 30px;
+  }
+
+  .image-container {
+    width: 180px;
+    height: 180px;
+  }
+
+  #feedback-message {
+    width: 180px;
+  }
+}
+
 
   
