@@ -11,6 +11,9 @@
 
 <body>
 
+  <!-- Fade Overlay for Fade-in/Fade-out -->
+  <div id="fade-overlay"></div>
+
   <!-- Background Video (no blur) -->
   <div class="video-wrapper">
     <video autoplay loop muted playsinline>
@@ -52,8 +55,16 @@
     <img id="next-button" src="assets/shared/NEXT.png" alt="Next Button" />
   </div>
 
+  <!-- Audios -->
+  <audio id="bg-music" src="assets/shared/KYPLTheme.mp3" loop preload="auto"></audio>
+  <audio id="click-sound" src="assets/shared/ButtonClick.mp3" preload="auto"></audio>
+  <audio id="trophy-sound" src="assets/shared/TrophyScreenSound.mp3" preload="auto"></audio>
+  <audio id="score-1to3" src="assets/shared/1to3ScoreSound.mp3" preload="auto"></audio>
+  <audio id="score-4to6" src="assets/shared/4to6ScoreSound.mp3" preload="auto"></audio>
+  <audio id="score-perfect" src="assets/shared/PerfectScoreSound.mp3" preload="auto"></audio>
+
+  <!-- JavaScript -->
   <script type="module" src="KYPL-FINALSCREEN.js"></script>
 
 </body>
-
 </html>

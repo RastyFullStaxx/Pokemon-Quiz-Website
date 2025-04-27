@@ -11,6 +11,9 @@
 
 <body>
 
+  <!-- Fade Overlay for Fade-in/Fade-out -->
+  <div id="fade-overlay"></div> <!-- <<< ADDED -->
+
   <!-- Background Video -->
   <div class="video-wrapper">
     <video autoplay loop muted playsinline>
@@ -33,30 +36,39 @@
     <img src="assets/shared/PokeballProgress.png" alt="Progress Bar" class="progress-bar" />
   </div>
 
+  <!-- Question Text -->
   <div class="question-container">
     <p id="question-text" class="question-text"></p>
   </div>
-  
+
+  <!-- Image & Feedback Overlay -->
   <div class="image-overlay-wrapper">
     <div class="image-container">
       <img id="question-image" class="image" src="">
     </div>
-  
+
     <div id="feedback-overlay" class="hidden">
       <img id="feedback-message" src="" alt="Answer Feedback" />
       <button id="next-button"><img src="assets/shared/NextQuestion.png" alt="Next" /></button>
     </div>
   </div>
-  
+
+  <!-- Choices -->
   <div class="choices-container">
     <button class="choice-button" id="choice1">Choice 1</button>
     <button class="choice-button" id="choice2">Choice 2</button>
     <button class="choice-button" id="choice3">Choice 3</button>
     <button class="choice-button" id="choice4">Choice 4</button>
   </div>
-  
 
-  <script type="module" src="KYPL-page.js"></script>
+  <!-- Audio Section (ADDED!) -->
+  <audio id="bg-music" src="assets/shared/KYPLTheme.mp3" loop preload="auto"></audio>
+  <audio id="click-sound" src="assets/shared/ButtonClick.mp3" preload="auto"></audio>
+  <audio id="correct-sound" src="assets/shared/CorrectAnswer.mp3" preload="auto"></audio>
+  <audio id="wrong-sound" src="assets/shared/WrongAnswer.mp3" preload="auto"></audio>
+
+  <!-- JavaScript -->
+  <script src="KYPL-page.js" type="module"></script>
 
 </body>
 
