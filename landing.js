@@ -1,5 +1,3 @@
-// landing.js
-
 document.addEventListener('DOMContentLoaded', () => {
   const landingVideo = document.getElementById('landingVideo');
   const headerImage = document.querySelector('.header-image');
@@ -19,34 +17,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // === Hover Sound ===
   startButton.addEventListener('mouseenter', () => {
-    clickSound.currentTime = 0; // rewind sound to start
+    clickSound.currentTime = 0; 
     clickSound.play();
   });
 
-
   // ==== Fade in content after short delay ====
   setTimeout(() => {
-    fadeOverlay.style.opacity = '0'; // Fade to show content
-  }, 200); 
+    fadeOverlay.style.opacity = '0';
+  }, 200);
 
-  // ==== Try to play music muted first ====
-  bgMusic.volume = 0.5;
-  bgMusic.muted = true;
+  // ==== Play background music immediately ====
+  bgMusic.volume = 0;     // Start with volume 0 (silent)
+  bgMusic.muted = false;  // Make sure it's unmuted
   bgMusic.play().then(() => {
-    setTimeout(() => { bgMusic.muted = false; }, 500);
-  }).catch(() => {
-    console.log("Music will start after user interaction.");
-  });
+    console.log("Background music started.");
 
-  // ==== Force music play on click or touch ====
-  const forcePlayMusic = () => {
-    if (bgMusic.paused) {
-      bgMusic.muted = false;
-      bgMusic.play();
-    }
-  };
-  document.body.addEventListener('click', forcePlayMusic, { once: true });
-  window.addEventListener('touchstart', forcePlayMusic, { once: true });
+    // Fade in the volume slowly to 0.5
+    let targetVolume = 0.5;
+    let currentVolume = 0;
+    const fadeInterval = setInterval(() => {
+      if (currentVolume < targetVolume) {
+        currentVolume += 0.05;
+        bgMusic.volume = Math.min(currentVolume, targetVolume);
+      } else {
+        clearInterval(fadeInterval);
+      }
+    }, 100); // Increase volume every 100ms
+  }).catch((error) => {
+    console.log("Autoplay blocked or failed:", error);
+  });
 
   // ==== Animate video zoom-out ====
   setTimeout(() => {
@@ -64,12 +63,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==== Fade out music, play click sound, fade screen, THEN change page ====
   startLink.addEventListener('click', (e) => {
     e.preventDefault();
-
     clickSound.currentTime = 0;
     clickSound.play();
 
-    // Fade out the screen
-    fadeOverlay.style.opacity = '3';
+    fadeOverlay.style.opacity = '3'; // Fade to black
 
     // Fade music out gradually
     const fadeOutMusic = setInterval(() => {
@@ -78,13 +75,12 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         clearInterval(fadeOutMusic);
         bgMusic.pause();
-        bgMusic.volume = 0.5; // Reset volume
+        bgMusic.volume = 0.5;
       }
     }, 50);
 
-    // After fade duration, go to next page
     setTimeout(() => {
       window.location.href = startLink.href;
-    }, 800); // Match fade overlay speed
+    }, 800);
   });
 });
