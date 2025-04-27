@@ -2,23 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Who's That Pokemon? </title>
-    <link href='https://fonts.googleapis.com/css?family=VT323' rel='stylesheet'>
-    <link rel="stylesheet" href="WTP-page.css"/>
+    <meta name="viewport" content="width=1600, initial-scale=1.0">
+    <title>Who's That Pokémon?</title>
+    <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
+    <link rel="stylesheet" href="WTP-page.css" />
 </head>
 
 <body>
 
+    <!-- Fade Overlay for Transitions -->
+    <div id="fade-overlay"></div> <!-- <<< ADD THIS -->
+
+    <!-- Background Video -->
     <div class="video-wrapper">
         <video autoplay loop muted playsinline>
-          <source src="assets/WtpPage/WtpBackground.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
+            <source src="assets/WtpPage/WtpBackground.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
         </video>
     </div>
-    
+
+    <!-- Header Image -->
     <img src="assets/WtpPage/header-wtp.png" alt="Header Image" class="header-image" />
-    
+
+    <!-- Progress Bar -->
     <div class="ProgressBar">
         <img src="assets/shared/PokeballProgress.png" alt="Progress Bar" class="progress-bar current" />
         <img src="assets/shared/PokeballProgress.png" alt="Progress Bar" class="progress-bar" />
@@ -29,11 +35,12 @@
         <img src="assets/shared/PokeballProgress.png" alt="Progress Bar" class="progress-bar" />
     </div>
 
+    <!-- Pokémon Image -->
     <div class="image-container">
         <img id="pokemon-image" src="assets/WtpPage/Pikachu1.png" class="image" />
     </div>
 
-    <!-- Question 1-->
+    <!-- Choices -->
     <div class="choices-container">
         <button class="choice-button" id="choice1">Raichu</button>
         <button class="choice-button" id="choice2">Pikachu</button>
@@ -44,17 +51,25 @@
     <!-- Feedback Overlay -->
     <div id="feedback-overlay" class="hidden">
         <div id="feedback-content">
-        <img id="next-button" src="assets/shared/NextQuestion.png" alt="Next Question" />
-        <img id="feedback-message" src="" alt="Answer Feedback" />
+            <img id="next-button" src="assets/shared/NextQuestion.png" alt="Next Question" />
+            <img id="feedback-message" src="" alt="Answer Feedback" />
         </div>
     </div>
-  
-  
-  
-  
 
+    <!-- Background Theme Music -->
+    <audio id="bg-music" src="assets/shared/WTPTheme.mp3" loop preload="auto"></audio> <!-- <<< ADD THIS -->
+
+    <!-- Button Click Sound -->
+    <audio id="click-sound" src="assets/shared/ButtonClick.mp3" preload="auto"></audio> <!-- <<< ADD THIS -->
+
+    <!-- Wrong Answer Sound -->
+    <audio id="wrong-sound" src="assets/shared/WrongAnswer.mp3" preload="auto"></audio> <!-- <<< ADD THIS -->
+
+    <!-- Correct Answer Sound -->
+    <audio id="correct-sound" src="assets/WtpPage/Charmander.mp3" preload="auto"></audio> <!-- <<< ADD THIS -->
+
+    <!-- JavaScript -->
     <script src="WTP-page.js"></script>
 
 </body>
-
 </html>

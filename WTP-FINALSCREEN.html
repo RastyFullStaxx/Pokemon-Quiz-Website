@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=1600, initial-scale=1.0">
   <title>Score Board</title>
   <link href='https://fonts.googleapis.com/css?family=VT323' rel='stylesheet'>
-  <link rel="stylesheet" href="WTP-FINALSCREEN.css"/>
+  <link rel="stylesheet" href="WTP-FINALSCREEN.css" />
 </head>
+
 <body>
+
+  <!-- Fade Overlay -->
+  <div id="fade-overlay"></div> <!-- <<< ADD THIS -->
 
   <div class="video-wrapper">
     <video autoplay loop muted playsinline>
@@ -19,9 +24,9 @@
   <img src="assets/WtpPage/header-wtp.png" alt="Header Image" class="header-image" />
 
   <!-- Main Content -->
-<div class="final-screen-container">
-    <img id="greeter" src="assets/WtpPage/BirchPerfectScore.png" alt="Greeter"/>
-  
+  <div class="final-screen-container">
+    <img id="greeter" src="assets/WtpPage/BirchPerfectScore.png" alt="Greeter" />
+
     <div class="dialog-wrapper">
       <div class="option-box">
         <img src="assets/shared/OptionBox.png" class="option-bg" />
@@ -31,7 +36,7 @@
           <div id="option-1" class="option">Menu</div>
         </div>
       </div>
-  
+
       <div class="dialog-box">
         <img src="assets/shared/DialogBox.png" class="dialog-bg" />
         <p id="dialog-text" class="dialog-content">
@@ -40,18 +45,25 @@
       </div>
     </div>
   </div>
-  
-  
-    <!-- Trophy Unlock Container -->
-    <div id="trophy-unlock-container" class="hidden">
-        <div id="trophy-aura"></div> <!-- NEW: Aura -->
-        <img id="trophy-image" src="assets/TrophyPage/wtp-trophy-unlocked.png" alt="WTP Trophy" />
-        <img id="next-button" src="assets/shared/NEXT.png" alt="Next Button" />
-    </div>
-      
-  
+
+  <!-- Trophy Unlock Container -->
+  <div id="trophy-unlock-container" class="hidden">
+    <div id="trophy-aura"></div>
+    <img id="trophy-image" src="assets/TrophyPage/wtp-trophy-unlocked.png" alt="WTP Trophy" />
+    <img id="next-button" src="assets/shared/NEXT.png" alt="Next Button" />
+  </div>
+
+  <!-- Audio Section -->
+  <audio id="bg-music" src="assets/shared/WTPTheme.mp3" loop preload="auto"></audio>
+  <audio id="click-sound" src="assets/shared/ButtonClick.mp3" preload="auto"></audio>
+
+  <!-- Score Sounds -->
+  <audio id="score-1to3" src="assets/shared/1to3ScoreSound.mp3" preload="auto"></audio>
+  <audio id="score-4to6" src="assets/shared/4to6ScoreSound.mp3" preload="auto"></audio>
+  <audio id="score-perfect" src="assets/shared/PerfectScoreSound.mp3" preload="auto"></audio>
 
   <script src="WTP-FINALSCREEN.js"></script>
 
 </body>
+
 </html>

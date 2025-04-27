@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=1600, initial-scale=1.0" />
   <title>Pokémon Trophies</title>
   <link rel="stylesheet" href="trophy-page.css" />
 </head>
+
 <body>
+
+  <!-- Fade Overlay for transitions -->
+  <div id="fade-overlay"></div> <!-- <<< ADD THIS -->
+
   <!-- Background Image (same as select-quiz-type) -->
   <div class="image-wrapper">
     <img src="assets/TrophyPage/trophy-bg.png" alt="Select Quiz Type Background" class="background-image" />
@@ -45,8 +51,15 @@
       <img src="assets/shared/back_button.png" alt="Back" />
     </button>
   </a>
-  
-  <script type="module" src="trophy-page.js"></script>
+
+  <!-- Background Music (reuse) -->
+  <audio id="bg-music" src="assets/shared/SelectQuizTheme.mp3" loop preload="auto"></audio> <!-- <<< ADD THIS -->
+
+  <!-- Button Click Sound -->
+  <audio id="click-sound" src="assets/shared/ButtonClick.mp3" preload="auto"></audio> <!-- <<< ADD THIS -->
+
+  <!-- JavaScript -->
+  <script src="trophy-page.js"></script>
 
 </body>
 </html>

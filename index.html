@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=1600, initial-scale=1.0" />
@@ -8,7 +9,11 @@
 </head>
 
 <body>
-  <!-- Video Background -->
+
+  <!-- Fade Overlay for Transitions -->
+  <div id="fade-overlay"></div>
+
+  <!-- Background Video -->
   <div class="video-wrapper">
     <video id="landingVideo" autoplay muted loop playsinline>
       <source src="assets/LandingPage/background.mp4" type="video/mp4" />
@@ -16,48 +21,23 @@
     </video>
   </div>
 
-  <!-- Header -->
+  <!-- Sound Effects -->
+  <audio id="click-sound" src="assets/shared/ButtonClick.mp3" preload="auto"></audio>
+  <audio id="bg-music" src="assets/LandingPage/LandingPageTheme.mp3" loop preload="auto"></audio>
+
+  <!-- Header Image -->
   <img src="assets/LandingPage/header.png" alt="Header Image" class="header-image" />
 
   <!-- Start Button -->
   <a href="select-quiz-type.html" id="start-link">
-    <button class="start-button">
+    <button class="start-button" id="start-button">
       <img src="assets/LandingPage/start_button.png" alt="Start" />
     </button>
   </a>
 
-  <!-- Background Music -->
-  <audio id="bg-music" src="assets/LandingPage/LandingPageTheme.mp3" autoplay loop></audio>
+  <!-- JavaScript -->
+  <script src="landing.js"></script>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const landingVideo = document.getElementById('landingVideo');
-      const headerImage = document.querySelector('.header-image');
-      const startButton = document.querySelector('.start-button');
-      const bgMusic = document.getElementById('bg-music');
-    
-      // Start background music after any first click
-      document.body.addEventListener('click', () => {
-        if (bgMusic.paused) {
-          bgMusic.volume = 0.5;
-          bgMusic.play();
-        }
-      }, { once: true });
-    
-      // Animate Video Zoom + Slide
-      setTimeout(() => {
-        landingVideo.style.transform = 'scale(1) translateY(0%)';
-      }, 100);
-    
-      // Animate Header and Start Button after 6 seconds
-      setTimeout(() => {
-        headerImage.style.opacity = '1';
-        headerImage.style.transform = 'translateY(0)';
-        startButton.style.opacity = '1';
-        startButton.style.transform = 'translateY(0)';
-      }, 3000); // <<< 6 seconds delay
-    });
-    </script>
-    
 </body>
+
 </html>

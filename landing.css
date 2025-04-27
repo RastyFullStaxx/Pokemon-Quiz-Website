@@ -16,6 +16,7 @@
     position: relative;
   }
   
+
   /* Video Wrapper */
   .video-wrapper {
     position: fixed;
@@ -45,6 +46,19 @@
     transition: all 1s ease; /* Smooth transition */
   }
   
+/* Fade overlay */
+#fade-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  opacity: 1; /* Start fully black */
+  pointer-events: none;
+  z-index: 9999;
+  transition: opacity 1.5s ease-in-out; /* <<< slower and smoother fade */
+}
   
   /* Start Button */
   .start-button {
@@ -62,13 +76,13 @@
   .start-button img {
     width: 150px;
     height: auto;
-    transition: transform 5s ease, opacity 0.6s ease;
+    transition: transform 0.5s ease, opacity 0.6s ease;
   }
   
   /* Hover Effect */
   .start-button:hover img {
-    transform: translateY(-6px) scale(1.05);
-    animation: blink 0.8s infinite;
+    transform: scale(1.1) translateY(-6px); /* Bigger + slight lift */
+    animation: blink 1.2s steps(2, start) infinite; /* Soft blink */
   }
   
   @keyframes blink {
